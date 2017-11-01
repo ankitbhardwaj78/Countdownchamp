@@ -1,29 +1,28 @@
 import React, { Component } from 'react';
-import './App.css'
+import Clock from './Clock';
+import './App.css';
 class App extends Component{
  constructor(props)
    {
    super(props);
   this.state={
-      deadline: 'August 7,2018'
+      deadline: 'August 7,2018',
+      newDeadline:' '
      }
   }
 changedeadline(){
-this.setState({deadline:'August 7,2019'})
+this.setState({deadline:this.state.newDeadline})
 }
 
             render(){
                 return(
           <div className="App">
                  <div className="heading"> countdown to {this.state.deadline}</div>
-            <div>
-                 <div className="clock-days"> 14 days</div>
-                 <div className="clock-hours">30 hours</div>
-                 <div className="clock-minutes">15 minutes</div>
-                 <div className="clock-seconds">20 seconds</div>
-           </div>
+          <Clock />
            <div>
-                 <input placeholder='new date'/>
+                 <input placeholder='new date'
+                onChange={event=>this.setState({newDeadline: event.target.value})}
+                 />
                  <button onClick={()=>this.changedeadline()}>Submit </button>
              </div>
           </div>
