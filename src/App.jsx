@@ -18,7 +18,9 @@ this.setState({deadline:this.state.newDeadline})
                 return(
           <div className="App">
                  <div className="heading"> countdown to {this.state.deadline}</div>
-          <Clock />
+          <Clock
+              deadline={this.state.deadline}
+           />
            <div>
                  <input placeholder='new date'
                 onChange={event=>this.setState({newDeadline: event.target.value})}
