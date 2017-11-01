@@ -11,11 +11,23 @@ class Clock extends Component{
                    seconds:0
               }
       }
+
+
       componentWillMount(){
         this.getTimeutil(this.props.deadline);
       }
+
+
       componentDidMount(){
       setInterval(() => this.getTimeutil(this.props.deadline),1000 );
+      }
+
+      leading0(num)
+      {
+      if(num<10)
+         return '0' + num;
+      else
+         return num;
       }
 
   getTimeutil(deadline){
@@ -29,10 +41,10 @@ class Clock extends Component{
 render(){
     return(
          <div>
-             <div className="clock-days"> {this.state.days} days</div>
-            <div className="clock-hours"> {this.state.hours} hours</div>
-            <div className="clock-minutes"> {this.state.minutes} minutes</div>
-            <div className="clock-seconds"> {this.state.seconds} seconds</div>
+             <div className="clock-days"> {this.leading0(this.state.days)} days</div>
+            <div className="clock-hours"> {this.leading0(this.state.hours)} hours</div>
+            <div className="clock-minutes"> {this.leading0(this.state.minutes)} minutes</div>
+            <div className="clock-seconds"> {this.leading0(this.state.seconds)} seconds</div>
           </div>
           )
      }
